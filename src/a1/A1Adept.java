@@ -35,6 +35,9 @@ public class A1Adept {
 		// initialize array of names of customers
 		String[] namesOfCustomers = new String[countOfCustomers];
 		
+		// initialize amount for total cost
+		double[] amounts = new double[countOfCustomers];
+		
 		// second loop of customers
 		for (int j=0; j<countOfCustomers; j++) {
 			// declare first name of customer
@@ -48,9 +51,6 @@ public class A1Adept {
 			// declare integer count of items bought by customer
 			int countOfItems = scan.nextInt();
 			
-			// initialize amount for total cost
-			double[] amounts = new double[countOfCustomers];
-				
 			// third loop for number of each item
 			for (int k=0; k<countOfItems; k++) {
 				// declare quantity of each item bought
@@ -65,6 +65,8 @@ public class A1Adept {
 					amounts[k] = storeItemPrices[k] * quantityOfItem;
 				}
 			}
+		
+		}
 		// call methods to find output
 		String biggestSpent = findBiggest(amounts);
 		String smallestSpent= findSmallest(amounts);
@@ -74,7 +76,6 @@ public class A1Adept {
 		System.out.println("Biggest: " + "(" + biggestSpent + ")");
 		System.out.println("Smallest: " + "(" + smallestSpent + ")");
 		System.out.println("Average: " + averageSpent);
-		}
 	scan.close();
 	}
 	// method for biggest spender
