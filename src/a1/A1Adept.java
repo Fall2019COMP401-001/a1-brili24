@@ -82,10 +82,10 @@ public class A1Adept {
 	
 	// get name of spenders
 	for (int b=0; b<amounts.length; b++) {
-		if (biggestSpentAmount.equals(String.format("%.2f", amounts[b]))) {
+		if (biggestSpent == (amounts[b])) {
 			biggestSpender = namesOfCustomers[b];
 		}
-		if (smallestSpentAmount.equals(String.format("%.2f", amounts[b]))) {
+		if (smallestSpent == amounts[b]) {
 			smallestSpender = namesOfCustomers[b];
 		}
 	}
