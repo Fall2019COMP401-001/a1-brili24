@@ -21,13 +21,11 @@ public class A1Adept {
 		
 		// initial loop for store items
 		for(int i=0; i<countOfStoreItems; i++) {
-			
 			// assign store item name in array
 			storeItemNames[i] = scan.next();
 		
 			// assign store item price in second array
 			storeItemPrices[i] = scan.nextDouble();
-			
 		}
 		// declare integer count of customers
 		int countOfCustomers = scan.nextInt();
@@ -35,7 +33,7 @@ public class A1Adept {
 		// initialize array of names of customers
 		String[] namesOfCustomers = new String[countOfCustomers];
 		
-		// initialize amount for total cost
+		// declare array of amounts for total cost
 		double[] amounts = new double[countOfCustomers];
 		
 		// second loop of customers
@@ -59,27 +57,47 @@ public class A1Adept {
 				// declare name of item
 				String nameOfItem = scan.next();
 				
-				// reference array of store item names 
-				if (nameOfItem == storeItemNames[k]) {
-					// add and multiply amount for the cost for each customer
-					amounts[k] = storeItemPrices[k] * quantityOfItem;
+				// fourth loop for matching name of item to store item name
+				for (int a=0; a<countOfStoreItems; a++) {
+					if (nameOfItem.equals(storeItemNames[a])) {
+					// put amount spent for each customer
+					amounts[j] += storeItemPrices[a] * quantityOfItem;
+					}	
 				}
 			}
-		
 		}
-		// call methods to find output
-		String biggestSpent = findBiggest(amounts);
-		String smallestSpent= findSmallest(amounts);
-		String averageSpent = findAverage(amounts);
-		
-		// print output
-		System.out.println("Biggest: " + "(" + biggestSpent + ")");
-		System.out.println("Smallest: " + "(" + smallestSpent + ")");
-		System.out.println("Average: " + averageSpent);
+	// call methods to find output
+	double biggestSpent = findBiggest(amounts);
+	double smallestSpent= findSmallest(amounts);
+	double averageSpent = findAverage(amounts);
+	
+	// to 2 decimals
+	String biggestSpentAmount = String.format("%.2f", biggestSpent);
+	String smallestSpentAmount = String.format("%.2f", smallestSpent);
+	String averageSpentAmount = String.format("%.2f", averageSpent);
+	
+	// declare biggest and smallest spender
+	String biggestSpender = "";
+	String smallestSpender = "";
+	
+	// get name of spenders
+	for (int b=0; b<amounts.length; b++) {
+		if (biggestSpentAmount.equals(String.format("%.2f", amounts[b]))) {
+			biggestSpender = namesOfCustomers[b];
+		}
+		if (smallestSpentAmount.equals(String.format("%.2f", amounts[b]))) {
+			smallestSpender = namesOfCustomers[b];
+		}
+	}
+	// print output
+	System.out.println("Biggest: " + biggestSpender + " (" + biggestSpentAmount + ")");
+	System.out.println("Smallest: " + smallestSpender + " (" + smallestSpentAmount + ")");
+	System.out.println("Average: " + averageSpentAmount);
+	
 	scan.close();
 	}
 	// method for biggest spender
-	static String findBiggest(double[] amounts) {
+	static double findBiggest(double[] amounts) {
 		// initialize current maximum to first value in array
 		double currentBiggest = amounts[0];
 		
@@ -89,12 +107,11 @@ public class A1Adept {
 				currentBiggest = amounts[x];
 			}
 		}
-		String biggest = String.format("%.2f", currentBiggest);
-		return biggest;
+		return currentBiggest;
 	}
 		
 	// method for smallest spender
-	static String findSmallest(double[] amounts) {
+	static double findSmallest(double[] amounts) {
 		// initialize current minimum to first value in array
 		double currentSmallest = amounts[0];
 				
@@ -104,19 +121,17 @@ public class A1Adept {
 				currentSmallest = amounts[y];
 			}
 		}
-		String smallest = String.format("%.2f", currentSmallest);
-		return smallest;
+		return currentSmallest;
 	}
 		
 	// method for average
-	static String findAverage(double[] amounts) {
+	static double findAverage(double[] amounts) {
 		// get sum of all values in array
 		double sum = 0;
 		for (int z=0; z<amounts.length; z++) {
 			sum += amounts[z];
 		}
 		double averageAmount = sum / amounts.length;
-		String average = String.format("%.2f", averageAmount);
-		return average;
+		return averageAmount;
 	}
 }
