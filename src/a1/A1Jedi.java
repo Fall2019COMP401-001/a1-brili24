@@ -79,15 +79,20 @@ public class A1Jedi {
 					finalNumberCustomers[b]++;
 				}
 			}
-		}
-		// print output in for loop
-		for (int c = 0; c<countOfStoreItems; c++) {
-			if (finalNumberBought[c] == 0) {
-				System.out.println("No customers bought " + storeItemNames[c]);
-			} else {
-				System.out.println(finalNumberCustomers[c] + " customers bought " + finalNumberBought[c] + " " + storeItemNames[c]);
+			// array for if item bought is false
+			for (int c = 0; c<storeItemNames.length; c++) {
+				itemBought[c] = false;
 			}
 		}
+		// print output in for loop
+		for (int d = 0; d<countOfStoreItems; d++) {
+			if (finalNumberBought[d] == 0) {
+				System.out.println("No customers bought " + storeItemNames[d]);
+			} else {
+				System.out.println(finalNumberCustomers[d] + " customers bought " + finalNumberBought[d] + " " + storeItemNames[d]);
+			}
+		}
+
 	scan.close();
 	}
 }
