@@ -69,7 +69,7 @@ public class A1Jedi {
 				for (int a = 0; a < countOfStoreItems; a++) {
 					if (nameOfItem.equals(storeItemNames[a])) {
 						itemBought[a] = true;
-						finalNumberBought[a] = finalNumberBought[a] + quantityOfItem;
+						finalNumberBought[a] += quantityOfItem;
 					}
 				}
 			}

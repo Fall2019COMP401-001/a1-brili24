@@ -43,7 +43,7 @@ public class A1Novice {
 				double price = scan.nextDouble();
 				
 				// add and multiply price to the total cost
-				total = total + price * numberOfEachItem;
+				total += price * numberOfEachItem;
 			}
 		// to two decimal places
 		String totalPrice = String.format("%.2f", total);
